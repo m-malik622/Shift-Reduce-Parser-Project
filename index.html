@@ -1,197 +1,246 @@
 <!DOCTYPE html>
 
 <html>
-<head>
+  <head>
     <title>Shift Reduce Parser</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
-    
-    <h2>Shift Reduce Parser</h2>
-    <p>By Mujtaba Malik</p>
-    <form action="/action_page.php">
-        <label for="fname">Input:</label>
-        <input type="text" id="input">
-        <input type="submit" value="Submit">
-      </form>
-    <table class="parser_table" bgcolor="black" width="700" border="1">
-        <tr bgcolor="grey">
-          <th rowspan="2" width="100">State</th>
-          <th colspan="6" width="100">Action</th>
-          <th colspan="3" width="100">Goto</th>
-        </tr>
-        <tr bgcolor="grey">
-          <th width="100">id</th>
-          <th width="100">+</th>
-          <th width="100">*</th>
-          <th width="100">(</th>
-          <th width="100">)</th>
-          <th width="100">$</th>
-          <th width="100">E</th>
-          <th width="100">T</th>
-          <th width="100">F</th>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>0</td>
-          <td>S5</td>
-          <td></td>
-          <td></td>
-          <td>S4</td>
-          <td></td>
-          <td></td>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>1</td>
-          <td></td>
-          <td>S6</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>accept</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>2</td>
-          <td></td>
-          <td>R2</td>
-          <td>S7</td>
-          <td></td>
-          <td>R2</td>
-          <td>R2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>3</td>
-          <td></td>
-          <td>R4</td>
-          <td>R4</td>
-          <td></td>
-          <td>R4</td>
-          <td>R4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>4</td>
-          <td>S5</td>
-          <td></td>
-          <td></td>
-          <td>S4</td>
-          <td></td>
-          <td></td>
-          <td>8</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>5</td>
-          <td></td>
-          <td>R6</td>
-          <td>R6</td>
-          <td></td>
-          <td>R6</td>
-          <td>R6</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>6</td>
-          <td>S5</td>
-          <td></td>
-          <td></td>
-          <td>S4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>9</td>
-          <td>3</td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>7</td>
-          <td>S5</td>
-          <td></td>
-          <td></td>
-          <td>S4</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>10</td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>8</td>
-          <td></td>
-          <td>S6</td>
-          <td></td>
-          <td></td>
-          <td>S11</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>9</td>
-          <td></td>
-          <td>R1</td>
-          <td>S7</td>
-          <td></td>
-          <td>R1</td>
-          <td>R1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>10</td>
-          <td></td>
-          <td>R3</td>
-          <td>R3</td>
-          <td></td>
-          <td>R3</td>
-          <td>R3</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr bgcolor="lightgrey" align="center">
-          <td>11</td>
-          <td></td>
-          <td>R5</td>
-          <td>R5</td>
-          <td></td>
-          <td>R5</td>
-          <td>R5</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-</body>
-<body>
-    <h5>Grammar Production Rules</h5>
-    <img src="Grammar Prod Rules Img.png" alt="1.E-->E+T|2.E-->T|3.T-->T*F|4.T-->F|5.F-->(E)|6.F-->id">
-</body>
-<body>
-    <tbody class="steps_display">
-        <tr>
-            <td class=parser_table_code width="125"></td>
-            <td class="remaining_input"></td>
-        </tr>
-        <tr>
-            <td class=parser_table_code width="125"></td>
-            <td class="remaining_input"></td>
-        </tr>
-    </tbody>
-</body>
+  </head>
+  <body>
+    <div class="flex_container">
+      <div class="left_side">
+        <h1>Shift Reduce Parser</h2>
+        <h4>By Mujtaba Malik</h4>
+        <div>
+          <label for="input">Input:</label>
+          <input type="text" id="input" />
+          <button
+            onclick="process_input(document.getElementById('input').value)"
+          >
+            Submit
+          </button>
+        </div>
+        <div>
+          <table bgcolor="black" width="700" border="1">
+            <thead>
+              <tr bgcolor="grey">
+                <th rowspan="2" width="100">State</th>
+                <th colspan="6" width="100">Action</th>
+                <th colspan="3" width="100">Goto</th>
+              </tr>
+              <tr bgcolor="grey">
+                <th width="100">id</th>
+                <th width="100">+</th>
+                <th width="100">*</th>
+                <th width="100">(</th>
+                <th width="100">)</th>
+                <th width="100">$</th>
+                <th width="100">E</th>
+                <th width="100">T</th>
+                <th width="100">F</th>
+              </tr>
+            </thead>
+            <tbody id="parser_table">
+              <tr bgcolor="lightgrey" align="center">
+                <td>0</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td>S4</td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>1</td>
+                <td></td>
+                <td>S6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>accept</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>2</td>
+                <td></td>
+                <td>R2</td>
+                <td>S7</td>
+                <td></td>
+                <td>R2</td>
+                <td>R2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>3</td>
+                <td></td>
+                <td>R4</td>
+                <td>R4</td>
+                <td></td>
+                <td>R4</td>
+                <td>R4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>4</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td>S4</td>
+                <td></td>
+                <td></td>
+                <td>8</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>5</td>
+                <td></td>
+                <td>R6</td>
+                <td>R6</td>
+                <td></td>
+                <td>R6</td>
+                <td>R6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>6</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td>S4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>9</td>
+                <td>3</td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>7</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td>S4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>10</td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>8</td>
+                <td></td>
+                <td>S6</td>
+                <td></td>
+                <td></td>
+                <td>S11</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>9</td>
+                <td></td>
+                <td>R1</td>
+                <td>S7</td>
+                <td></td>
+                <td>R1</td>
+                <td>R1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>10</td>
+                <td></td>
+                <td>R3</td>
+                <td>R3</td>
+                <td></td>
+                <td>R3</td>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr bgcolor="lightgrey" align="center">
+                <td>11</td>
+                <td></td>
+                <td>R5</td>
+                <td>R5</td>
+                <td></td>
+                <td>R5</td>
+                <td>R5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table border="1" width="300">
+            <thead>
+              <tr>
+                <th width="50">Number</th>
+                <th width="250">Production Rule</th>
+              </tr>
+            </thead>
+            <tbody id="grammar_production_rules">
+              <tr>
+                <td class="rule_number">1</td>
+                <td class="grammar_rule">E → E + T</td>
+              </tr>
+              <tr>
+                <td class="rule_number">2</td>
+                <td class="grammar_rule">E → T</td>
+              </tr>
+              <tr>
+                <td class="rule_number">3</td>
+                <td class="grammar_rule">T → T * F</td>
+              </tr>
+              <tr>
+                <td class="rule_number">4</td>
+                <td class="grammar_rule">T → F</td>
+              </tr>
+              <tr>
+                <td class="rule_number">5</td>
+                <td class="grammar_rule">F → ( E )</td>
+              </tr>
+              <tr>
+                <td class="rule_number">6</td>
+                <td class="grammar_rule">F → id</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="right_side">
+        <table border="1" width="300">
+          <thead>
+            <tr>
+              <th width="50">Stack</th>
+              <th width="250">Input</th>
+            </tr>
+          </thead>
+          <tbody id="steps_display">
+            <tr>
+              <td class="parser_table_code" width="125"></td>
+              <td class="remaining_input"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
