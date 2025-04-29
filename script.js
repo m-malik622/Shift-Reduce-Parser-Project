@@ -136,7 +136,7 @@ function process_input(value) {
         symbol = input[i]
         try {
             action = parser_table[state][symbol]
-            console.log("\n\n\naction is: " + action)
+            //console.log("\n\n\naction is: " + action)
         } catch (error) {
             alert("Error: failed to get value of table element")
             return false         
@@ -146,29 +146,29 @@ function process_input(value) {
             parser_table_code.push(symbol)
             parser_table_code.push(new_state)
             i+=1
-            console.log("new state: " + new_state)
-            console.log("symbol: " + symbol)
-            console.log("stack at end of S: " + parser_table_code)
+            //console.log("new state: " + new_state)
+            //console.log("symbol: " + symbol)
+            //console.log("stack at end of S: " + parser_table_code)
         }
         else if(action[0]==='R'){
             parser_table_code.pop()
             grammar_rule = grammar_rules[action.substring(1)-1]
-            console.log("stack before underiving: " + parser_table_code)
+            //console.log("stack before underiving: " + parser_table_code)
             new_symbol = underive_expression(grammar_rule, parser_table_code)
-            console.log("stack after underiving: " + parser_table_code)
+            //console.log("stack after underiving: " + parser_table_code)
             temp_state = parser_table_code[parser_table_code.length-1]; //peek at stack
-            console.log("temp state: " + temp_state)
+            //console.log("temp state: " + temp_state)
             parser_table_code.push(new_symbol)
-            console.log("new symbol: " + new_symbol)
+            //console.log("new symbol: " + new_symbol)
             
             new_state = parser_table[temp_state][new_symbol]
             if (new_state==''){
                 parser_table_code.pop()
             }
             else{
-                console.log("new state: " + new_state)
+                //console.log("new state: " + new_state)
                 parser_table_code.push(new_state)
-                console.log("Stack at end of R" + parser_table_code )
+                //console.log("Stack at end of R" + parser_table_code )
             }
         }
         else{
