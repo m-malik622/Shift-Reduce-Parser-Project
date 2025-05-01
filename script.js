@@ -107,7 +107,7 @@ function display_step(parser_table_history, parser_table_code, i, input){
 };
 
 function clear_display_table(){
-    const table_body = document.getElementById('steps_display'); // Replace 'yourTableId'
+    const table_body = document.getElementById('steps_display'); 
     for (let i = table_body.rows.length - 1; i > 0; i--) {
         table_body.deleteRow(i);
     }
@@ -175,10 +175,10 @@ function process_input(value) {
             break
         }
     }
+    const table_body = document.querySelector("#steps_display");
+    const last_row = table_body.querySelector("tr:last-child");
     if (action == "accept"){
         alert("Success");
-        const table_body = document.querySelector("#steps_display");
-        const last_row = table_body.querySelector("tr:last-child");
         if (last_row){
             last_row.style.background = "green";
         }
@@ -186,6 +186,9 @@ function process_input(value) {
     }
     else{
         alert("Failed to compile")
+        if (last_row){
+            last_row.style.background = "red";
+        }
         return false
     }
 }
