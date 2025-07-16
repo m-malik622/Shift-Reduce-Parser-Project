@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+.dark-mode {
+  --bg: linear-gradient(90deg, #2B162F 0%, #5D2468 100%);
+  --text: #f0f0f0;
+  --border: #333;
+  --accent: #2e86de;
+}
+
+.light-mode {
+  --bg: linear-gradient(90deg, #D4ECFF 0%, #A0C4FF 100%);
+  --text: #1e1e1e;
+  --border: #ccc;
+  --accent: #007bff;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif, Arial;
+}
+
+.hero-section{
+  background: var(--bg);
+  color: var(--text);
+}
+
+.parser-page {
+  display: flex;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.setup {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  resize: none;
+}
+textarea:hover {
+    box-shadow: 0 0 10px var(--accent); 
+}
+.grammar-input {
+  min-width: 300px;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 2rem;
+  color: #f0e0f5;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+.AddGrammarRule{
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 999px; 
+  cursor: pointer;
+}
+button {
+  padding: 8px 12px;
+  margin-top: 8px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.stack-container {
+  display: flex;
+  gap: 10px;
+}
+
+.stack-item {
+  background-color: #444;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
