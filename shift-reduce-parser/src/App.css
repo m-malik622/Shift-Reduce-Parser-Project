@@ -26,7 +26,6 @@ body {
 
 .parser-page {
   display: flex;
-  height: 100vh;
   background: var(--bg);
   color: var(--text);
 }
@@ -93,13 +92,168 @@ button {
 
 }
 
-.stack-container {
-  display: flex;
-  gap: 10px;
+.shift-reduce-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #3b0a2a; /* deep maroon background */
+  color: #fbe9e7; /* light text */
+  font-family: 'Segoe UI', sans-serif;
+  table-layout: fixed;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.stack-item {
-  background-color: #444;
-  padding: 8px 12px;
-  border-radius: 6px;
+.shift-reduce-table th,
+.shift-reduce-table td {
+  border: 1px solid #7b1fa2; /* violet border */
+  padding: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+.shift-reduce-table th {
+  background-color: #6a1b9a; /* header with slightly different purple */
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.shift-reduce-table td {
+  background-color: #4a148c; /* slightly lighter maroon for cells */
+}
+
+.shift-reduce-table td:first-child {
+  font-weight: bold;
+  background-color: #880e4f;
+  color: #fff;
+}
+
+.shift-reduce-table tr:nth-child(even) td {
+  background-color: #5e1472; /* zebra striping */
+}
+
+.shift-reduce-table thead {
+  border-bottom: 2px solid #ab47bc;
+}
+
+.shift-reduce-table tbody {
+  border-top: 2px solid #ab47bc;
+}
+.stack-table-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.stack-table {
+  width: 100%;
+  max-width: 240px; /* keeps it compact and vertical */
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: #16213e; /* deep navy */
+  color: #eaeaea; /* soft light text */
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.stack-table th,
+.stack-table td {
+  border: 1px solid #1f4068; /* dark blue border */
+  padding: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stack-table th {
+  background-color: #0f3460; /* dark steel blue */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.stack-table td {
+  background-color: #1a1a2e; /* slightly lighter navy for cells */
+}
+
+.stack-table tr:nth-child(even) td {
+  background-color: #1e2a47; /* zebra striping */
+}
+
+.stack-table tr:hover td {
+  background-color: #273c75; /* blue highlight on hover */
+}
+
+.stack-table thead {
+  border-bottom: 2px solid #3f72af;
+}
+
+.stack-table tbody {
+  border-top: 2px solid #3f72af;
+}
+
+
+.controls-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 1rem;
+}
+
+.controls-left {
+  display: flex;
+  gap: 1rem; /* space between Previous & Next */
+}
+
+.controls-right {
+  display: flex;
+}
+.grammar-table-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.grammar-table {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+  background-color: #0d2b2f; /* deep teal background */
+  color: #f0fdfd; /* light aqua text */
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.grammar-table th,
+.grammar-table td {
+  border: 1px solid #1c4d4f; /* darker teal border */
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.grammar-table th {
+  background-color: #116466; /* rich teal header */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.grammar-table tr:nth-child(even) td {
+  background-color: #144d4f; /* slightly lighter teal for zebra striping */
+}
+
+.grammar-table tr:hover td {
+  background-color: #1a5e60; /* hover highlight */
+}
+
