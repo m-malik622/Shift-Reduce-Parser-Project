@@ -1,12 +1,15 @@
 import { motion } from "motion/react";
-import React, { useEffect } from "react";
+import React, { useEffect, type RefObject } from "react";
 import GrammarRule from "../Utils/GrammarRule";
 import { buildParsingTable } from "../Utils/TableGeneration";
 import { useIsCompilingStore } from "../store/IsCompilingStore";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
 import { useParsingTableStore } from "../store/ParsingTableStore";
 
-const ShiftReduceParserTable = () => {
+interface ShiftReduceParserTableProps {
+  ref: RefObject<HTMLElement|null>; // false if for stack
+}
+const ShiftReduceParserTable: React.FC<ShiftReduceParserTableProps> = ({ ref }) => {
   const grammarRules = useGrammarRuleStore((state) => state.grammarRules);
   const header = useParsingTableStore((state) => state.header);
   const setHeader = useParsingTableStore((state) => state.setHeader);
@@ -41,8 +44,8 @@ const ShiftReduceParserTable = () => {
   }, [grammarRules]);
 
   return (
-    <motion.div>
-      <motion.table className="shift-reduce-table">
+    <motion.div initial>
+      <motion.table className="shift-reduce-table" ref={ref}>
         <thead>
           <tr>
             {header.map((h, idx) => (

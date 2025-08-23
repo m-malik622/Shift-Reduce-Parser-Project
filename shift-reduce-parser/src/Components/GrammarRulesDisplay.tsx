@@ -1,13 +1,15 @@
-import React from "react";
+import React, { type RefObject } from "react";
 import { motion } from "motion/react";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
-
-const GrammarRulesDisplay = () => {
+interface GrammarRulesDisplayProps {
+  ref: React.RefObject<HTMLTableElement | null>; // false if for stack
+}
+const GrammarRulesDisplay: React.FC<GrammarRulesDisplayProps> = ({ ref }) => {
     const grammarRules = useGrammarRuleStore((state) => state.grammarRules);
 
   return (
     <div className="grammar-table-container">
-      <table className="grammar-table">
+      <table className="grammar-table" ref={ref}>
         <thead>
           <tr>
             <th>#</th>

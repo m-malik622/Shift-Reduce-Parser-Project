@@ -4,6 +4,7 @@ import GrammarRule from './GrammarRule';
 
 
 export function splitTokens(text: string, grammarRules: GrammarRule[]) {
+  if (!text) throw new Error(`Cannot compile ""`);
   //gather terminal tokens 
     const before_arrow_symbols = new Set<string>()
     for (const rule of grammarRules){

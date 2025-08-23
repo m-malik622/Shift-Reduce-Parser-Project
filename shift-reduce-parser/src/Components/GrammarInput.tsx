@@ -3,12 +3,14 @@ import GrammarRule from "../Utils/GrammarRule";
 import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
-
-const GrammarInput = () => {
+interface GrammarInputProps {
+  text: string;
+}
+const GrammarInput: React.FC<GrammarInputProps> = ({ text }) => {
   const addGrammarRule = useGrammarRuleStore((state) => state.addGrammarRule);
 
   //loacals
-  const [text, setText] = useState("");
+  const [localText, setLocalText] = useState(text);
   const [isAdded, setIsAdded] = useState(false);
   const grammarInputRef = useRef(null);
 
@@ -19,7 +21,7 @@ const GrammarInput = () => {
       setIsAdded(true);
     } catch (error) {
       grammarInputRef.current;
-      //change omponent and add animation
+      //change component and add animation
     }
   };
 
@@ -31,9 +33,9 @@ const GrammarInput = () => {
         ref={grammarInputRef}
         disabled={isAdded}
         rows={1}
-        value={text}
+        value={localText}
         onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
-          setText(e.target.value)
+          setLocalText(e.target.value)
         }
         onKeyDown={(e: {
           key: string;
@@ -42,12 +44,13 @@ const GrammarInput = () => {
         }) => {
           if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault(); // prevent newline
-            CheckIfValidGrammarRule(text);
+            CheckIfValidGrammarRule(localText);
           }
         }}
       />
       <motion.button
-        onClick={() => CheckIfValidGrammarRule(text)}
+        style={isAdded ? { backgroundColor: "#3e803b" } : {}}
+        onClick={() => CheckIfValidGrammarRule(localText)}
         title="Submit"
         whileHover={{
           scale: 1.2,
@@ -55,7 +58,7 @@ const GrammarInput = () => {
         }}
         whileTap={{ scale: 0.9 }}
       >
-        Add
+        {isAdded ? "Added" : "Add"}
       </motion.button>
     </motion.div>
   );

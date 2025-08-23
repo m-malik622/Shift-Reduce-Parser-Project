@@ -25,7 +25,6 @@ const InputEditor = () => {
     initializeParserStateHistory(initialState);
   }
   const startCompile = () => {
-    console.log("in start compile")
     const userInputTokens = splitTokens(text, grammarRules);
     if (userInputTokens){
       setUserInput(userInputTokens);

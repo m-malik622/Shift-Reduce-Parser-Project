@@ -2,40 +2,58 @@ import { useContext, useState } from "react";
 import GrammarRule from "../Utils/GrammarRule";
 import GrammarInput from "./GrammarInput";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
-
+import { motion } from "motion/react";
 const GrammarEditor = () => {
   const grammarRules = useGrammarRuleStore((state) => state.grammarRules);
   const addGrammarRule = useGrammarRuleStore((state) => state.addGrammarRule);
   const removeGrammarRule = useGrammarRuleStore(
     (state) => state.removeGrammarRule
   );
-  const removeAllGrammarRules = useGrammarRuleStore(
-    (state) => state.removeAllGrammarRules
-  );
 
   return (
-    <div>
+    <>
       <h2>Grammar Rule Set</h2>
-      <div>
+      <div className="grammar-editor">
         {grammarRules.map((rule, index) => (
-          <div key={index}>
-            <GrammarInput />
-            <p>index: {index}</p>
-            <button
+          <div
+            key={`${index}-${rule.get_before_arrow()}-${rule.get_after_arrow()}`}
+          >
+            <GrammarInput
+              text={`${rule.get_before_arrow()} -> ${rule.get_after_arrow()}`}
+            />
+            <motion.button
               className="delete-rule"
-              onClick={() => removeGrammarRule(index)}
+              onClick={() => {
+                console.log("removing index:", index);
+                console.log("gramar rules before:", grammarRules);
+                removeGrammarRule(index);
+                console.log("gramar rules after:", grammarRules);
+              }}
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 1 },
+              }}
+              whileTap={{ scale: 0.9 }}
             >
               Remove Rule
-            </button>
+            </motion.button>
           </div>
         ))}
       </div>
       <div>
-        <button className="AddGrammarRule" onClick={() => addGrammarRule(null)}>
+        <motion.button
+          className="AddGrammarRule"
+          onClick={() => addGrammarRule(null)}
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 1 },
+          }}
+          whileTap={{ scale: 0.9 }}
+        >
           Add Rule
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </>
   );
 };
 export default GrammarEditor;

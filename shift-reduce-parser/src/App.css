@@ -20,8 +20,27 @@ body {
 }
 
 .hero-section{
+  position: relative;
   background: var(--bg);
   color: var(--text);
+  width: '100%';
+  height: '80vh'
+}
+.hero-overlay{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+}
+
+.hero-title{
+ display: flex;
+ flex-direction: column;
+ gap: 1rem; 
 }
 
 .parser-page {
@@ -38,11 +57,11 @@ body {
 }
 
 .main {
-  flex: 1;
+  display: flex;
+  flex-direction: row;
   padding: 20px;
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
   gap: 30px;
 }
 
@@ -58,6 +77,15 @@ textarea {
 textarea:hover {
     box-shadow: 0 0 10px var(--accent); 
 }
+.grammar-editor{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1300px;
+  overflow-x: auto;
+  padding: 10px;
+  
+}
 .grammar-input {
   min-width: 300px;
   padding: 20px 30px;
@@ -65,7 +93,7 @@ textarea:hover {
   border-radius: 12px;
   font-size: 2rem;
   color: #f0e0f5;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(70, 61, 61, 0.05);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   outline: none;
@@ -94,6 +122,7 @@ button {
 
 .shift-reduce-table {
   width: 100%;
+  max-width: 1200px;
   border-collapse: collapse;
   background-color: #3b0a2a; /* deep maroon background */
   color: #fbe9e7; /* light text */
@@ -257,3 +286,10 @@ button {
   background-color: #1a5e60; /* hover highlight */
 }
 
+/*animations*/
+.shift-reduce-table .highlight {
+  background-color: rgb(21, 105, 70) !important;
+}
+.grammar-table .highlight {
+  background-color: rgb(76, 22, 168) !important;
+}
