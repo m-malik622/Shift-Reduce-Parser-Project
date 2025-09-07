@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { RefObject, createRef } from "react";
+import type { RefObject } from "react";
 
 interface HighlightedElementsProps {
   highlightedRefs: RefObject<HTMLElement>[];

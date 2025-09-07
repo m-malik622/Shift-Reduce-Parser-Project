@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
-import { h2 } from 'motion/react-client';
+import {  motion } from 'motion/react';
 import React, { useState } from 'react'
 import { useIsCompilingStore } from '../store/IsCompilingStore';
 import { useUserInputStore } from '../store/UserInputStore';
@@ -7,17 +6,16 @@ import { splitTokens } from '../Utils/Tokenizer';
 import { useGrammarRuleStore } from '../store/GrammarRulesStore';
 import { useParserStateStore } from '../store/ParserStateStore';
 import ParsingState from '../Utils/ParsingState';
-
+import { useErrorStore } from '../store/ErrorStore';
 const InputEditor = () => {
   const isCompiling = useIsCompilingStore((state) => state.isCompiling);
   const setIsCompiling = useIsCompilingStore((state) => state.setIsCompiling);
   const setUserInput = useUserInputStore((state) => state.setUserInput);
-  const userInput = useUserInputStore((state) => state.userInput);
   const grammarRules = useGrammarRuleStore((state) => state.grammarRules);
   const initializeParserStateHistory = useParserStateStore((state) => state.initializeParserStateHistory);
   const resetParserStateHistory = useParserStateStore((state) => state.resetParserStateHistory);
-  const parserStateHistory = useParserStateStore((state) => state.parserStateHistory);
-  
+  const showError = useErrorStore((state) => state.showError);
+
 
   //locals
   const [text, setText] = useState('');
@@ -25,13 +23,16 @@ const InputEditor = () => {
     initializeParserStateHistory(initialState);
   }
   const startCompile = () => {
-    const userInputTokens = splitTokens(text, grammarRules);
-    if (userInputTokens){
+    try{
+      const userInputTokens = splitTokens(text, grammarRules);
       setUserInput(userInputTokens);
       const initialState = new ParsingState(["0"], [...userInputTokens]);
       // do in separate function so that changes happen immediately instead of after function ends
       initializeStateHistory(initialState);
       setIsCompiling(true) 
+  }
+    catch(error){
+      showError("Unable to Compile. Please make sure there are spaces between symbols and symbols are consistent(all represented as id for example)", "error");
     }
   }
 

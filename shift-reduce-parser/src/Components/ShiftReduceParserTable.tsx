@@ -1,13 +1,11 @@
 import { motion } from "motion/react";
 import React, { useEffect, type RefObject } from "react";
-import GrammarRule from "../Utils/GrammarRule";
 import { buildParsingTable } from "../Utils/TableGeneration";
-import { useIsCompilingStore } from "../store/IsCompilingStore";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
 import { useParsingTableStore } from "../store/ParsingTableStore";
 
 interface ShiftReduceParserTableProps {
-  ref: RefObject<HTMLElement|null>; // false if for stack
+  ref: RefObject<HTMLTableElement | null>; // false if for stack
 }
 const ShiftReduceParserTable: React.FC<ShiftReduceParserTableProps> = ({ ref }) => {
   const grammarRules = useGrammarRuleStore((state) => state.grammarRules);

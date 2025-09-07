@@ -14,7 +14,7 @@ interface ParserStateStoreProps {
   resetParserStateHistory: () => void;
 }
 
-export const useParserStateStore = create<ParserStateStoreProps>((set, get) => ({
+export const useParserStateStore = create<ParserStateStoreProps>((set) => ({
   parserStateHistory: [new ParsingState()],
   parserStateHistoryIterator: 0,
 

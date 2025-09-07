@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react";
 import GrammarRule from "../Utils/GrammarRule";
-import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
+import { useErrorStore } from "../store/ErrorStore";
 interface GrammarInputProps {
   text: string;
 }
 const GrammarInput: React.FC<GrammarInputProps> = ({ text }) => {
   const addGrammarRule = useGrammarRuleStore((state) => state.addGrammarRule);
+  const showError = useErrorStore((state) => state.showError);
 
   //loacals
   const [localText, setLocalText] = useState(text);
@@ -20,8 +21,8 @@ const GrammarInput: React.FC<GrammarInputProps> = ({ text }) => {
       addGrammarRule(ruleToAdd);
       setIsAdded(true);
     } catch (error) {
+      showError("Cannot Process Grammar Rule. Ensure that it contains a ->", "error");
       grammarInputRef.current;
-      //change component and add animation
     }
   };
 

@@ -1,4 +1,3 @@
-import { useGrammarRuleStore } from '../store/GrammarRulesStore';
 import GrammarRule from './GrammarRule';
 // basic token splitter
 

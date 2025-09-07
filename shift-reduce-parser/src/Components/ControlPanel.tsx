@@ -1,10 +1,5 @@
-import { AnimatePresence, motion } from "motion/react";
-import { h2 } from "motion/react-client";
-import React, { useState } from "react";
+import { motion } from "motion/react";
 import { useIsCompilingStore } from "../store/IsCompilingStore";
-import { useUserInputStore } from "../store/UserInputStore";
-import { splitTokens } from "../Utils/Tokenizer";
-import { useGrammarRuleStore } from "../store/GrammarRulesStore";
 import { useParserStateStore } from "../store/ParserStateStore";
 import { useParsingStatusStore } from "../store/ParsingStatusStore";
 const ControlPanel = () => {

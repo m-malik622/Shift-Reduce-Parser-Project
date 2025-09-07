@@ -154,9 +154,6 @@ export function buildParsingTable(grammarRules: GrammarRule[]): ParsingTable {
     return stateId.get(key)!;
   }
 
-  const startState = getState(
-    closure([{ lhs: startProd.lhs, rhs: startProd.rhs, dot: 0 }])
-  );
 
   for (let i = 0; i < states.length; ++i) {
     const I = states[i];

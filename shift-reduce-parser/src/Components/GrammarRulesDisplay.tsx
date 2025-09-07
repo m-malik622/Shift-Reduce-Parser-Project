@@ -1,5 +1,4 @@
-import React, { type RefObject } from "react";
-import { motion } from "motion/react";
+import React from "react";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
 interface GrammarRulesDisplayProps {
   ref: React.RefObject<HTMLTableElement | null>; // false if for stack

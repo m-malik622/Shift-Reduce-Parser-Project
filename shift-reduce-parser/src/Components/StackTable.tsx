@@ -1,6 +1,5 @@
 import React from "react";
-import { AnimatePresence, motion, scale } from "motion/react";
-import { Scale } from "lucide-react";
+import { motion } from "motion/react";
 
 interface StackTableProps {
   isInput: boolean; // false if for stack
@@ -21,7 +20,7 @@ const StackTable: React.FC<StackTableProps> = ({ isInput, contents }) => {
             <motion.tr key={idx}
             initial={{ opacity: 0, height: 0, scale:0 }}
             animate={{ opacity: 1, height: 'auto', scale:1 }}
-            exit={{ opacity: 0, height: 0, Scale:0 }}
+            exit={{ opacity: 0, height: 0, scale:0 }}
             transition={{ duration: 0.8, type: "spring", bounce: 0.25 }}
             >
               <td>{row}</td>

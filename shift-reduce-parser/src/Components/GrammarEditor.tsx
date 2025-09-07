@@ -1,5 +1,3 @@
-import { useContext, useState } from "react";
-import GrammarRule from "../Utils/GrammarRule";
 import GrammarInput from "./GrammarInput";
 import { useGrammarRuleStore } from "../store/GrammarRulesStore";
 import { motion } from "motion/react";

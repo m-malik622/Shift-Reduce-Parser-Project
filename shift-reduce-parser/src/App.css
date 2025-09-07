@@ -42,7 +42,11 @@ body {
  flex-direction: column;
  gap: 1rem; 
 }
-
+.toggle-btn {
+  margin: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
 .parser-page {
   display: flex;
   background: var(--bg);

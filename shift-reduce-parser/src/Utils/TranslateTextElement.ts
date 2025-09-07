@@ -1,5 +1,4 @@
 import type { MutableRefObject } from 'react';
-import { MotionValue } from 'framer-motion';
 
 export type Position = {
   x: number;

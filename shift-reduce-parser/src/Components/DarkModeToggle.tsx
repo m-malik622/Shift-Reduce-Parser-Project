@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Toggle from "react-toggle";
 
 
@@ -10,7 +10,7 @@ export const DarkModeToggle: React.FC<Props> = (toggleDarkMode) => {
 
   return (
     <Toggle
-      onChange={({ target }) => {toggleDarkMode}}
+      onChange={() => {toggleDarkMode}}
       icons={{ checked: "🌙", unchecked: "🔆" }}
       aria-label="Dark mode toggle"
     />

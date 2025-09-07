@@ -1,18 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import GrammarRule from "../Utils/GrammarRule";
-import GrammarInput from "./GrammarInput";
-import GrammarEditor from "./GrammarEditor";
-import ShiftReduceParserTable from "./ShiftReduceParserTable";
-import InputEditor from "./InputEditor";
-import GrammarRulesDisplay from "./GrammarRulesDisplay";
-import { useGrammarRuleStore } from "../store/GrammarRulesStore";
-import { useIsCompilingStore } from "../store/IsCompilingStore";
-import { useUserInputStore } from "../store/UserInputStore";
-import { useParserStateStore } from "../store/ParserStateStore";
-import StackTable from "./StackTable";
-import ControlPanel from "./ControlPanel";
-import ParsingState from "../Utils/ParsingState";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { motion } from "motion/react";
 import ReactPlayer from "react-player";
 
 const Hero = () => {
